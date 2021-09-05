@@ -17,7 +17,7 @@
 + 这个时候第一次push需要添加远程仓库
 
 ```shell
-1| git remote add <默认origin> <远程仓库url>     本地默认是origin 
+1| git remote add <默认origin> <远程仓库url>    
 ```
 
 + 然后就可以添加、提交、推送文件
@@ -25,7 +25,7 @@
 ```shell
 1|git add --all
 2|git commit -m "提交信息" 
-3|git push -u <本地仓库name> <远程分支名>   # 本地仓库名默认：origin  远程分支名默认：master
+3|git push -u origin master   # # 推送到 Github
 ```
 
 + 然后下一次就不用这么麻烦了，直接下面的操作
