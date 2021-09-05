@@ -114,7 +114,7 @@ curl: try 'curl --help' or 'curl --manual' for more information
 ruby ***********.rb
 ```
 
-执行完毕后，回报
+执行完毕后，回报的结果
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gu205ulqzaj60u00lq43u02.jpg)
 
