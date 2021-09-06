@@ -53,7 +53,7 @@ Next: Launcher Script：下一个:启动脚本
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gu6pscaoacj60zc0u0wiw02.jpg)
 
-+ 设置IEDA插件
+## 插件
 
 设置IEDA中的各种插件，可以进行自定义设置、支持不同的开发或快速开发的一些插件。Preferences —> Plugins
 
