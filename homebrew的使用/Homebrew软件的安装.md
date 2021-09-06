@@ -83,7 +83,7 @@ brew search maven
 ```
 + 安装
 ```
-brew install mysql@3.5
+brew install maven@3.5
 ```
 + maven在zsh环境变量配置，安装完了有提示的，直接复制就行
 ```
