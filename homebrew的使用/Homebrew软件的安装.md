@@ -78,15 +78,15 @@ echo $JAVA_HOME
 
 ## maven的安装
 + brew查找maven版本
-```
+```shell
 brew search maven
 ```
 + 安装
-```
+```shell
 brew install maven@3.5
 ```
 + maven在zsh环境变量配置，安装完了有提示的，直接复制就行
-```
+```shell
 echo 'export PATH="/usr/local/opt/maven@3.5/bin:$PATH"' >> ~/.zshrc
 ```
 + 查看是否安装成功
@@ -161,26 +161,32 @@ npm config get disturl
 
 
 + brew查找mysql版本
-```
+```shell
 brew search mysql
 ```
 + 安装
-```
+```shell
 brew install mysql@5.7
 ```
 + 开机自动启动
-```
+```shell
 brew services start mysql@5.7
+
+# 如果你不想/不需要后台服务，你可以运行:
+/usr/local/opt/mysql@5.7/bin/mysqld_safe --datadir=/usr/local/var/mysql
 ```
 + mysql在zsh环境变量配置，安装完了有提示的，直接复制就行
-```
+```shell
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 ```
 +  连接mysql，root用户无初始密码，直接回车
-```
+```shell
 mysql -uroot -p
+
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)  ---这个情况是mysql还没有被启动
 ```
 +  设置root用户初始密码，为'root'
-```
+```shell
 set password for 'root'@'localhost' = 'root';
 ```
+
