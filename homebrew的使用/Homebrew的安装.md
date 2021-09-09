@@ -1,5 +1,7 @@
 #  Homebrew
 
+[TOC]
+
 ###  一、Homebrew是什么
 
 官网：[https://brew.sh/index_zh-cn](https://brew.sh/index_zh-cn)
