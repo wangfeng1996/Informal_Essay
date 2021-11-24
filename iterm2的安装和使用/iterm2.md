@@ -64,7 +64,7 @@ brew install --cask iterm2
 + 查看shell
 
 ```shell
-cat /etc/shells
+s
 
 # 输出
 
