@@ -1,4 +1,4 @@
-# homebrew几个常用命令
+# tahomebrew几个常用命令
 
 + 查看homebrew版本
 ```
@@ -100,3 +100,10 @@ brew tap <gihhub_user/repo>
 # 例如
 brew tap homebrew/cask-versions
 ```
+
++ 跟新Java仓库源
+
+```shell
+brew tap brew tap AdoptOpenJDK/openjdk
+```
+

@@ -40,7 +40,7 @@ echo $SHELL
 # 查看所有的shell
 cat /etc/shells
 # 修改默认shell为zsh
-chsh -s /bin/bash
+chsh -s /bin/zsh
 ```
 
 + homebrew安装目录
