@@ -38,7 +38,7 @@ OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
 
 ```shell
 # 查看地址
-/usr/libexec/java_home -V
+/usr/libexec/jamv
 # 回显
 Matching Java Virtual Machines (1):
     1.8.0_292 (x86_64) "AdoptOpenJDK" - "AdoptOpenJDK 8" /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home

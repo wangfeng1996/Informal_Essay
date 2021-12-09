@@ -104,6 +104,6 @@ brew tap homebrew/cask-versions
 + 跟新Java仓库源
 
 ```shell
-brew tap brew tap AdoptOpenJDK/openjdk
+brew tap  AdoptOpenJDK/openjdk
 ```
 
