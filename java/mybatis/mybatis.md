@@ -3,8 +3,20 @@
 ### 框架介绍
 
 MyBatis官网地址：<http://www.mybatis.org/mybatis-3/> 
-> 什么是mybatis：MyBatis 是一款优秀的持久层框架，可以对数据库进行增删改查的操作。底层封装了jdbc，开发者只需要关注sql的本身即可，不需要处理加载驱动，建立连接，创建statement，关闭连接的过程
+> 什么是mybatis框架
 >
+> MyBatis 是一款优秀的持久层框架，可以对数据库进行增删改查的操作。底层封装了jdbc，开发者只需要关注sql的本身即可，不需要处理加载驱动，建立连接，创建statement，关闭连接的过程。
+
+`tip:`框架主要解决的是：能够实现技术的整合；提高开发的效率，降低难度；
+
+### Mybatis的优点(底层封装了jdbc)
+
++ 注册驱动
++ 创建jdbc中使用的Connection，Statement，ResultSet
++ 执行sql语句，得到ResultSet对象
++ 处理ResultSet，将数据转为java对象
++ 关闭资源
++ 关闭sql语句和java代码的解藕
 
 ###  1、ORM
 
@@ -17,21 +29,23 @@ MyBatis官网地址：<http://www.mybatis.org/mybatis-3/>
 
 <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gx68hg9ur8j30pc0po3zx.jpg" style="zoom:45%;" />
 
-### 二、原始的jdbc操作
+### 2、原始的jdbc操作
 
-+ 查询
+####  2.1查询
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gx68ntzn65j30lo0ex3z9.jpg)
 
-+ 插入
+#### 2.2插入
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gx68o99w8xj30rb0emtbe.jpg)
 
-+ 原始 JDBC 的操作问题分析 
-  + 频繁创建和销毁数据库的连接会造成系统资源浪费从而影响系统性能。
-  + sql 语句在代码中硬编码，如果要修改 sql 语句，就需要修改 java 代码，造成代码不易维护。
-  + 查询操作时，需要手动将结果集中的数据封装到实体对象中。
-  + 增删改查操作需要参数时，需要手动将实体对象的数据设置到 sql 语句的占位符。
+#### 2.3原始 JDBC 的操作问题分析 
+
++ 频繁创建和销毁数据库的连接会造成系统资源浪费从而影响系统性能。
++ sql 语句在代码中硬编码，如果要修改 sql 语句，就需要修改 java 代码，造成代码不易维护。
++ 查询操作时，需要手动将结果集中的数据封装到实体对象中。
++ 增删改查操作需要参数时，需要手动将实体对象的数据设置到 sql 语句的占位符。
+
 + 原始 JDBC 的操作问题解决方案 
   + 使用数据库连接池初始化连接资源。 
   + 将sql语句抽取到配置文件中。
@@ -55,7 +69,7 @@ MyBatis官网地址：<http://www.mybatis.org/mybatis-3/>
 
 #### 3.2 入门案例
 
-+ 首先创建一个maven工程，在pom文件中加入依赖
+##### 3.2.1 首先创建一个maven工程，在pom文件中加入依赖
 
 ```xml
  <dependencies>
@@ -105,7 +119,7 @@ MyBatis官网地址：<http://www.mybatis.org/mybatis-3/>
     </dependencies>
 ```
 
-+ 创建实体类对象
+##### 3.2.2创建实体类对象
 
 ```java
 /**
@@ -122,7 +136,7 @@ public class User {
 }
 ```
 
-+ 创建数据库表并导入相关数据
+##### 3.2.3创建数据库表并导入相关数据
 
 ```sql
 DROP TABLE IF EXISTS `user`;
@@ -147,7 +161,7 @@ values (41, '老王', '2018-02-27 17:47:08', '男', '北京'),
        (48, '小马宝莉', '2018-03-08 11:44:00', '女', '北京修正');
 ```
 
-+ 编写核心配置文件的(mybatis-config.xml)
+##### 3.2.4编写核心配置文件的(mybatis-config.xml)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -183,7 +197,7 @@ values (41, '老王', '2018-02-27 17:47:08', '男', '北京'),
 </configuration>
 ```
 
-+ 编写映射文件
+##### 3.2.5编写映射文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -211,7 +225,7 @@ values (41, '老王', '2018-02-27 17:47:08', '男', '北京'),
 
 ```
 
-+ 编写测试类
+##### 3.2.6编写测试类
 
 ```java
 public class MybatisTest {
@@ -338,6 +352,4 @@ SqlSessionFactory factory = builder.build(inputStream);
     <mapper resource="org/mybatis/example/BlogMapper.xml"/>
   </mappers>
 </configuration>
-
 ```
-
