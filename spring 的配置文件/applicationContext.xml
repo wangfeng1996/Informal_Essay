@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+        
+    <!--添加注解扫描包-->
+    <context:component-scan base-package="com.ymxdy"/>
+
+
+    <!--    添加数据源信息-->
+    <context:property-placeholder location="classpath*:jdbc.properties"/>
+<!-- 数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+
+    <!--    spring整合mybatis-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.itheima.domain"/>
+        <property name="configLocation" value="classpath:mybatisConfig.xml"/>
+    </bean>
+
+
+    <!-- 扫描mapper映射-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.itheima.dao"/>
+    </bean>
+
+
+    <!--    开启事务管理-->
+    <tx:annotation-driven transaction-manager="txManger"/>
+    <!--    开启事务，采用cglib进行动态代理-->
+    <!--    <tx:annotation-driven transaction-manager="txManger" proxy-target-class="true" />-->
+
+    <!-- 事务管理-->
+    <bean id="txManger" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>
