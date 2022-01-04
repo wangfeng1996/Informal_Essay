@@ -203,6 +203,16 @@ git add  <文件名>
 git reset  <文件名> 
 
 ```
+### 查看commit的节点
+```shell
+git log
+```
+
+
+### 本地回滚命令
+```shell
+git reset --hard commit节点
+```
 
 ### commit
 
