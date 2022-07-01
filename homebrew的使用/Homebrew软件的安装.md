@@ -38,7 +38,7 @@ OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
 
 ```shell
 # 查看地址
-/usr/libexec/jamv
+/usr/libexec/java
 # 回显
 Matching Java Virtual Machines (1):
     1.8.0_292 (x86_64) "AdoptOpenJDK" - "AdoptOpenJDK 8" /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
@@ -188,7 +188,70 @@ mysql -uroot -p
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)  ---这个情况是mysql还没有被启动
 ```
 +  设置root用户初始密码，为'root'
-```shell
+```mysql
 set password for 'root'@'localhost' = 'root';
 ```
+
++ mysql创建新的用户（必须在root用户下执行）
+
+```mysql
+// 语句
+CREATE USER '用户名'@'ip' IDENTIFIED BY '名称';
+// 样列
+CREATE USER 'wangfeng'@'LOCALHOST' IDENTIFIED BY 'wangfeng';
+```
+
++ mysql新用户赋予权限（必须在root用户下执行）
+
+```mysql
+grant 权限 on *.* to '用户'@'ip'; //  *.* 代表所有库下的所有表
+
+// 比如给该用户下所有的库赋予查询的权限
+grant select on *.* to '用户'@'ip';
+
+// 给用户赋予crud的权限
+grant select,delete,update,create,drop on *.* to 'wangfeng'@'localhost' identified by "wangfeng";
+
+// 赋予所有的权限
+grant all privileges on *.* to '用户'@'ip';
+
+赋权限后记得刷新： flush privileges;
+
+```
++ mysql 删除权限
+
+```mysql
+// 查看用户的权限
+show grants for 'wangfeng'@'localhost';
+
+// 删除用户的权限
+revoke all privileges on *.* from '用户'@'ip';
+
+// 刷新权限
+flush privileges;
+
+```
+
+
+
+####  删除用户
+
+  + 要查看MySQL服务器中的数据库:mysql的所有用户信息
+
+  ```mysql
+  USE mysql;
+  SELECT user, host FROM mysql.user;
+  ```
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3r6amzvloj20zw0u0whe.jpg" alt="截屏2022-07-01 09.30.41" style="zoom:50%;" />
+
+ + 假设您要删除用户帐户：`wangfeng`，请使用以下语句：
+
+  ```mysql
+  DROP USER 'wangfeng';
+  再次从mysql.user表中查询数据，您将看到用户api@localhost已被删除。
+  
+  // 要删除单个DROP USER语句中两个用户：remote_user和auditor的帐户，请使用以下语句：
+  DROP USER user1, user2;
+  ```
 
